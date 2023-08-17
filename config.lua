@@ -1,7 +1,7 @@
 Config = {}
 
 Config.Items = {
-    label = "Billiard Bar Shop",
+    label = "Mexican Cafe Job",
     slots = 1,
     items = {
         [1] = {
