@@ -17,18 +17,38 @@ ensure sp-MexicanCafeJob
 ## Add The Job To Ther Server Jobs
 - Naviage to `[qb] > qb-core > shared > jobs.lua`
 ```lua
-['mexicancafe'] = {
-	label = 'Mexican Cafe',
+    ['mexicancafe'] = {
+        label = 'Mexican Cafe',
         defaultDuty = false,
-	offDutyPay = false,
+        offDutyPay = false,
         grades = {
-            ['0'] = { name = 'Trainee', payment = 100 },
-            ['1'] = { name = 'Waiter/Waitress', payment = 150 },
-            ['2'] = { name = 'Assistant Manager', payment = 200 },
-            ['3'] = { name = 'Manager', payment = 250},
-            ['3'] = { name = 'Co Owner', payment = 250, isboss = true},
-   	    ['5'] = { name = 'Owner', payment = 300, isboss = true },	
-        },
+            ['0'] = {
+                name = 'Trainee',
+                payment = 100
+            },
+            ['1'] = {
+                name = 'Waiter/Waitress',
+                payment = 150
+            },
+            ['2'] = {
+                name = 'Assistant Manager',
+                payment = 200
+            },
+            ['3'] = {
+                name = 'Manager',
+                payment = 250
+            },
+            ['4'] = {
+                name = 'Co Owner',
+                payment = 250,
+                isboss = true
+            },
+            ['5'] = {
+                name = 'Owner',
+                payment = 300,
+                isboss = true
+            }
+        }
     },
 ```
 
