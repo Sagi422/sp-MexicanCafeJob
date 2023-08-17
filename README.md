@@ -14,6 +14,24 @@ ensure sp-MexicanCafeJob
 ```
 
 ---
+## Add The Job To Ther Server Jobs
+- Naviage to `[qb] > qb-core > shared > jobs.lua`
+```lua
+['mexicancafe'] = {
+	label = 'Mexican Cafe',
+        defaultDuty = false,
+	offDutyPay = false,
+        grades = {
+            ['0'] = { name = 'Trainee', payment = 100 },
+            ['1'] = { name = 'Waiter/Waitress', payment = 150 },
+            ['2'] = { name = 'Assistant Manager', payment = 200 },
+            ['3'] = { name = 'Manager', payment = 250},
+            ['3'] = { name = 'Co Owner', payment = 250, isboss = true},
+   	    ['5'] = { name = 'Owner', payment = 300, isboss = true },	
+        },
+    },
+```
+
 ## Items installation
 - To make items in this Mexican Cafe Job you need to add an items to your server
 - Naviage to `[qb] > qb-core / shared / items.lua` and add this lines
