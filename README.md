@@ -14,6 +14,15 @@ ensure sp-MexicanCafeJob
 ```
 
 ---
+
+# Add The MLO
+
+```CSS
+https://unclejust.tebex.io/package/4795945
+```
+
+---
+
 ## Add The Job To Ther Server Jobs
 - Naviage to `[qb] > qb-core > shared > jobs.lua`
 ```lua
