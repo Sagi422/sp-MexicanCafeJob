@@ -66,7 +66,7 @@ ensure sp-MexicanCafeJob
 ```
 ---
 ## Add The Food
-- Naviage to `[qb] > qb-smallresources > config.lua` and add this image
+- Naviage to `[qb] > qb-smallresources > config.lua`
 ```lua
 Config.ConsumablesEat = {
     -- sp-MexicanCafeJob
@@ -95,6 +95,28 @@ Config.ConsumablesAlcohol = {
     ["white_wine"] = math.random(20, 40),
     ["champagne"] = math.random(20, 40),
 }
+```
+## Add The Ped For The Vehicle Spawner
+- Naviage to `[qb] > qb-target > init.lua`
+```lua
+Config.Peds = {{
+    model = `a_m_m_fatlatin_01`,
+    coords = vector4(358.06, -334.1, 46.76, 211.11),
+    networked = true,
+    invincible = true,
+    blockevents = ture,
+    scenario = "WORLD_HUMAN_CLIPBOARD_FACILITY",
+    target = {
+        options = {{
+            type = "client",
+            event = "sp-MexicanCafeJob:VehicleMenu",
+            icon = 'fas fa-car',
+            label = "Open Vehicle Menu",
+            job = "mexicancafe"
+        }},
+        distance = 2.5
+    }
+}}
 ```
 
 ### Buy Me A Coffee
