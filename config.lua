@@ -53,7 +53,7 @@ Config.Items = {
             slot = 6,
         },
         [7] = {
-            name = "rlemon",
+            name = "lemon",
             price = 10,
             amount = 3,
             info = {},
@@ -61,7 +61,7 @@ Config.Items = {
             slot = 7,
         },
         [8] = {
-            name = "bsprite",
+            name = "sprite",
             price = 10,
             amount = 3,
             info = {},
