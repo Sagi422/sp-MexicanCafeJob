@@ -17,7 +17,7 @@ ensure sp-MexicanCafeJob
 
 # Add The MLO
 
-```CSS
+```
 https://unclejust.tebex.io/package/4795945
 ```
 
@@ -66,10 +66,8 @@ https://unclejust.tebex.io/package/4795945
 - Naviage to `[qb] > qb-core / shared / items.lua` and add this lines
 ```lua
 -- sp-MexicanCafeJob Items
-	['water_bottle'] 				 = {['name'] = 'water_bottle', 			  	  	['label'] = 'Bottle of Water', 			['weight'] = 500, 		['type'] = 'item', 		['image'] = 'water_bottle.png', 		['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'For all the thirsty out there'},
 	['champagne'] 			 	 	 = {['name'] = 'champagne', 			 		['label'] = 'Champagne',				['weight'] = 200, 		['type'] = 'item', 		['image'] = 'champagne.png',				['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,   ['combinable'] = nil,   ['description'] = 'Glass Fill With champagne'},
-	['beer'] 			 		 	 = {['name'] = 'beer', 			 			['label'] = 'Beer',						['weight'] = 200, 		['type'] = 'item', 		['image'] = 'beer.png',			['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,   ['combinable'] = nil,   ['description'] = 'Glass Fill With Beer'},
-	['white_wine'] 			 	 	 = {['name'] = 'white_wine', 			 		['label'] = 'White Wine',				['weight'] = 200, 		['type'] = 'item', 		['image'] = 'white_wineglass.png',		['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,   ['combinable'] = nil,   ['description'] = 'Glass Fill With White Wine'},
+	['white_wine'] 			 	 	 = {['name'] = 'white_wine', 			 		['label'] = 'White Wine',				['weight'] = 200, 		['type'] = 'item', 		['image'] = 'white_wine.png',		['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,   ['combinable'] = nil,   ['description'] = 'Glass Fill With White Wine'},
 	['red_wine'] 			 	 	 = {['name'] = 'red_wine', 			 		['label'] = 'Red Wine',				['weight'] = 200, 		['type'] = 'item', 		['image'] = 'red_wine.png',		['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,   ['combinable'] = nil,   ['description'] = 'Glass Fill With Red Wine'},
 	["flour"]						= {["name"] = "flour",  	  		["label"] = "Flour",	   		["weight"] = 50, 		["type"] = "item", 		["image"] = "flour.png", 			["unique"] = false, 	["useable"] = false, 	["shouldClose"] = true,   	["combinable"] = nil,   ["description"] = ""},
 	["dough"]						= {["name"] = "dough",  	  		["label"] = "Dough",	   		["weight"] = 50, 		["type"] = "item", 		["image"] = "dough.png", 			["unique"] = false, 	["useable"] = false, 	["shouldClose"] = true,   	["combinable"] = nil,   ["description"] = ""},
@@ -105,9 +103,9 @@ https://unclejust.tebex.io/package/4795945
 	["cooked_chicken"] 						= {["name"] = "cooked_chicken",  	  		["label"] = "Cooked Chicken",	    ["weight"] = 25, 		["type"] = "item", 		["image"] = "cooked_chicken.png", 			["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,   	["combinable"] = nil,   ["description"] = ""},
 	["raw_beef"] 						= {["name"] = "raw_beef",  	     		["label"] = "Raw Beef",	 		["weight"] = 25, 		["type"] = "item", 		["image"] = "raw_beef.png", 			["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,   	["combinable"] = nil,   ["description"] = ""},
 	["beef"] 							= {["name"] = "beef",  	     			["label"] = "Beef",	 		    ["weight"] = 25, 		["type"] = "item", 		["image"] = "beef.png", 				["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,   	["combinable"] = nil,   ["description"] = ""},
-	["onion"]                       = {["name"] = "onion",                      ["label"] = "Onion",                    ["weight"] = 500,       ["type"] = "item",      ["image"] = "burger-onion.png", ["unique"] = false,     ["useable"] = false,    ["shouldClose"] = false,    ["combinable"] = nil,    ["description"] = "An onion"},
-	["melon"] 					= {["name"] = "melon",  	    		["label"] = "Melon Slice",			["weight"] = 100, 		["type"] = "item", 		["image"] = "melon.png", 		["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,   	["combinable"] = nil,   ["description"] = "", ['hunger'] = math.random(20, 30), ['thirst'] = math.random(20, 30) },
-	['pineapple'] 					 = {['name'] = 'pineapple', 			 	  	['label'] = 'Pineapple Slice',			['weight'] = 200, 		['type'] = 'item', 		['image'] = 'rpineapple.png',			['unique'] = false, 	['useable'] = false, 	['shouldClose'] = true,   ['combinable'] nil,   ['description'] = 'Nice To Add To A Drink'},
+	["onion"]                       = {["name"] = "onion",                      ["label"] = "Onion",                    ["weight"] = 500,       ["type"] = "item",      ["image"] = "onion.png", ["unique"] = false,     ["useable"] = false,    ["shouldClose"] = false,    ["combinable"] = nil,    ["description"] = "An onion"},
+	["melon"] 					= {["name"] = "melon",  	    		["label"] = "Melon Slice",			["weight"] = 100, 		["type"] = "item", 		["image"] = "melon.png", 		["unique"] = false, 	["useable"] = false, 	["shouldClose"] = false,   	["combinable"] = nil,   ["description"] = ""},
+	['pineapple'] 					 = {['name'] = 'pineapple', 			 	  	['label'] = 'Pineapple Slice',			['weight'] = 200, 		['type'] = 'item', 		['image'] = 'pineapple.png',			['unique'] = false, 	['useable'] = false, 	['shouldClose'] = false,   ["combinable"] = nil,    ["description"] = ""},
 	["avocado"] 				 	 = {["name"] = "avocado", 			  	  	["label"] = "Avocado", 				["weight"] = 1000, 		["type"] = "item", 		["image"] = "avocado.png", 			["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,	   ["combinable"] = nil,   ["description"] = "Avocado"},
 	["cheese"] 					 = {["name"] = "cheese",					["label"] = "Cheese Slice",			["weight"] = 500,		["type"] = "item",		["image"] = "cheese.png",				["unique"] = false, 	["useable"] = false,	["shouldClose"] = false,	["combinable"] = nil,	["description"] = "Slice of Cheese"},
 ```
