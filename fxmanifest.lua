@@ -7,7 +7,6 @@ version '1.0.0'
 
 dependencies { 'qb-menu', 'qb-target', }
 
--- What to run
 client_scripts {
     'client.lua',
     'config.lua'
