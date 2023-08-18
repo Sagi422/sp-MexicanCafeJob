@@ -1506,102 +1506,100 @@ RegisterNetEvent("sp-MexicanCafeJob:Shop", function()
 end)
 
 RegisterNetEvent("sp-MexicanCafeJob:VehicleMenu", function()
-    exports['qb-menu']:openMenu({{
-        header = 'Mexican Café',
-        icon = 'fas fa-hat-cowboy-side',
-        isMenuHeader = true
-    }, {
-        header = 'Emperor',
-        icon = "fas fa-car",
-        txt = '',
-        params = {
-            event = 'sp-MexicanCafeJob:spawnEmperor',
-            args = {
-                message = ''
+    exports['qb-menu']:openMenu({
+        {
+            header = 'Mexican Café',
+            icon = 'fas fa-hat-cowboy-side',
+            isMenuHeader = true
+        },
+        {
+            header = 'Emperor',
+            icon = "fas fa-car",
+            txt = '',
+            params = {
+                event = 'sp-MexicanCafeJob:spawnVehicle',
+                args = {
+                    vehicleName = 'Emperor'
+                }
+            }
+        },
+        {
+            header = 'Taco Van',
+            icon = "fas fa-car",
+            txt = '',
+            params = {
+                event = 'sp-MexicanCafeJob:spawnVehicle',
+                args = {
+                    vehicleName = 'Taco Van'
+                }
+            }
+        },
+        {
+            header = 'Return Vehicle',
+            icon = "fas fa-rotate-left",
+            txt = '',
+            params = {
+                event = 'sp-MexicanCafeJob:ReturnVehicle',
+                args = {
+                    message = ''
+                }
+            }
+        },
+        {
+            header = 'Close',
+            txt = '',
+            icon = 'fas fa-x',
+            params = {
+                event = 'qb-menu:client:closeMenu',
+                args = {
+                    message = ''
+                }
             }
         }
-    }, {
-        header = 'Taco Van',
-        icon = "fas fa-car",
-        txt = '',
-        params = {
-            event = 'sp-MexicanCafeJob:spawnTacoVan',
-            args = {
-                message = ''
-            }
-        }
-    }, {
-        header = 'Return Vehicle',
-        icon = "fas fa-rotate-left",
-        txt = '',
-        params = {
-            event = 'sp-MexicanCafeJob:ReturnVehicle',
-            args = {
-                message = ''
-            }
-        }
-    }, {
-        header = 'Close',
-        txt = '',
-        icon = 'fas fa-x',
-        params = {
-            event = 'qb-menu:client:closeMenu',
-            args = {
-                message = ''
-            }
-        }
-    }})
+    })
 end)
 
-RegisterNetEvent("sp-MexicanCafeJob:spawnEmperor", function()
+RegisterNetEvent("sp-MexicanCafeJob:spawnVehicle", function(data)
+    local vehicleName = data.vehicleName
     if onDuty then
-        local coords = vector4(354.09, -349.05, 46.02, 159.13)
-
-        QBCore.Functions.SpawnVehicle('emperor', function(veh)
-            -- Set vehicle properties
-            SetVehicleNumberPlateText(veh, 'MexicanCafe69420')
-            SetEntityHeading(veh, 165.88)
-            exports['cc-fuel']:SetFuel(veh, 100.0)
-            TaskWarpPedIntoVehicle(PlayerPedId(), veh, -1)
-            TriggerEvent("vehiclekeys:client:SetOwner", QBCore.Functions.GetPlate(veh))
-            SetVehicleEngineOn(veh, true, true)
-        end, coords, true)
-    else
-        TriggerEvent('QBCore:Notify', "You are Not On Duty", 'error')
+        local coords = Config.Locations['vehicleSpawn']
+        local selectedVehicle = Config.Vehicles[vehicleName]
+        if selectedVehicle then
+            QBCore.Functions.SpawnVehicle(selectedVehicle, function(veh)
+                SetVehicleNumberPlateText(veh, 'MCafe69')
+                SetEntityHeading(veh, coords.w)
+                exports['LegacyFuel']:SetFuel(veh, 100.0)
+                TaskWarpPedIntoVehicle(PlayerPedId(), veh, -1)
+                TriggerEvent("vehiclekeys:client:SetOwner", QBCore.Functions.GetPlate(veh))
+                SetVehicleEngineOn(veh, true, true)
+            end, coords, true)
+        else
+            print("Invalid vehicle selected.")
+        end
     end
 end)
 
-RegisterNetEvent("sp-MexicanCafeJob:spawnTacoVan", function()
-    if onDuty then
-        local coords = vector4(354.09, -349.05, 46.02, 159.13)
 
-        QBCore.Functions.SpawnVehicle('taco', function(veh)
-            -- Set vehicle properties
-            SetVehicleNumberPlateText(veh, 'MexicanCafe69420')
-            SetEntityHeading(veh, 165.88)
-            exports['cc-fuel']:SetFuel(veh, 100.0)
-            TaskWarpPedIntoVehicle(PlayerPedId(), veh, -1)
-            TriggerEvent("vehiclekeys:client:SetOwner", QBCore.Functions.GetPlate(veh))
-            SetVehicleEngineOn(veh, true, true)
-        end, coords, true)
-    else
-        TriggerEvent('QBCore:Notify', "You are Not On Duty", 'error')
-    end
-end)
 
 RegisterNetEvent("sp-MexicanCafeJob:ReturnVehicle", function()
     if onDuty then
-        local playerPed = PlayerPedId()
-        local vehicle = GetVehiclePedIsIn(playerPed, false)
-
-        if IsPedInAnyVehicle(playerPed, false) then
-            local netId = NetworkGetNetworkIdFromEntity(vehicle)
-            TriggerServerEvent("sp-MexicanCafeJob:ReturnVehicleServer", netId)
+        local ped = PlayerPedId()
+        local veh = GetVehiclePedIsUsing(ped)
+        if veh ~= 0 then
+            SetEntityAsMissionEntity(veh, true, true)
+            DeleteVehicle(veh)
+            TriggerEvent('QBCore:Notify', "Vehicle Returned!", 'success')
         else
-            QBCore.Functions.Notify("You are not in a vehicle.", "error")
+            local pcoords = GetEntityCoords(ped)
+            local vehicles = GetGamePool('CVehicle')
+            for k, v in pairs(vehicles) do
+                if #(pcoords - GetEntityCoords(v)) <= 25.0 then
+                    SetEntityAsMissionEntity(v, true, true)
+                    DeleteVehicle(v)
+                    TriggerEvent('QBCore:Notify', "Vehicle Returned!", 'success')
+                end
+            end
         end
-    else
-        TriggerEvent('QBCore:Notify', "You are Not On Duty", 'error')
     end
 end)
 
