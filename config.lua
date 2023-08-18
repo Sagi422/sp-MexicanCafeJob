@@ -68,6 +68,14 @@ Config.Items = {
             type = "item",
             slot = 8,
         },
+        [9] = {
+            name = "water_bottle",
+            price = 10,
+            amount = 3,
+            info = {},
+            type = "item",
+            slot = 9,
+        },
     }
 }
 
