@@ -1,5 +1,5 @@
 fx_version 'cerulean'
-games { 'rdr3', 'gta5' }
+game 'gta5'
 
 author 'SP-SCRIPTS'
 description 'sp-MexicanCafeJob'
