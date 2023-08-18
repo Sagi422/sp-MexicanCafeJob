@@ -1,12 +1,7 @@
 local QBCore = exports['qb-core']:GetCoreObject()
 
 onDuty = true
-local inLoggedIn = true
 local PlayerJob = {}
-local fries = false
-local patty = false
-local skillbar = false
-local cleanfry = false
 
 RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
     isLoggedIn = true
@@ -1506,6 +1501,7 @@ RegisterNetEvent("sp-MexicanCafeJob:Shop", function()
 end)
 
 RegisterNetEvent("sp-MexicanCafeJob:VehicleMenu", function()
+    if onDuty then
     exports['qb-menu']:openMenu({
         {
             header = 'Mexican Café',
@@ -1557,6 +1553,9 @@ RegisterNetEvent("sp-MexicanCafeJob:VehicleMenu", function()
             }
         }
     })
+else
+    TriggerEvent('QBCore:Notify', "You are Not On Duty", 'error')
+end
 end)
 
 RegisterNetEvent("sp-MexicanCafeJob:spawnVehicle", function(data)
