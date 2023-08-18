@@ -33,13 +33,3 @@ AddEventHandler('sp-MexicanCafeJob:giveitem', function(item, count)
         player.Functions.AddItem(item, count)
     end
 end)
-
-RegisterServerEvent("sp-MexicanCafeJob:ReturnVehicleServer")
-AddEventHandler("sp-MexicanCafeJob:ReturnVehicleServer", function(netId)
-    local vehicle = NetworkGetEntityFromNetworkId(netId)
-
-    if DoesEntityExist(vehicle) then
-        DeleteEntity(vehicle)
-        TriggerClientEvent("QBCore:Notify", -1, "Vehicle Returned!", "success")
-    end
-end)
