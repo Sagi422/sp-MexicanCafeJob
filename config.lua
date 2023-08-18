@@ -1,5 +1,14 @@
 Config = {}
 
+Config.Locations = {
+    ['vehicleSpawn'] = vector4(353.48, -349.07, 46.53, 163.55)
+}
+
+Config.Vehicles = {
+    ["Taco Van"] = "taco",
+    ["Emperor"] = "emperor",
+}
+
 Config.Items = {
     label = "Mexican Cafe Job",
     slots = 1,
@@ -78,4 +87,3 @@ Config.Items = {
         },
     }
 }
-
